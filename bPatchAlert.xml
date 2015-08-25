@@ -15,6 +15,5 @@
 
     <Events>
         <Event name="ON_COMPONENT_LOAD" bind="OnComponentLoad" />
-        <Event name="ON_PLAYER_READY"   bind="OnPlayerReady" />
     </Events>
 </Component>

@@ -20,15 +20,14 @@ Debug.EnableLogging(false)
 -- =============================================================================
 
 local c_URLs = {
-    ["live-eu"] = "https://operator-v01-ew1.firefallthegame.com/api/v1/products/Firefall_Beta",
-    ["live-us"] = "https://operator-v01-uw2.firefallthegame.com/api/v1/products/Firefall_Beta",
-    ["pts"]     = "https://operator-v01-uw2-publictest.firefall.com/api/v1/products/Firefall_PublicTest"
+    Live    = "https://operator.firefallthegame.com/api/v1/products/Firefall_Beta",
+    PTS     = "https://operator-v01-uw2-publictest.firefall.com/api/v1/products/Firefall_PublicTest"
 }
 
 local g_Enable = true
 local g_BuildInfo = {}
 local g_Timer = 900
-local g_URL = c_URLs["pts"]
+local g_URL = c_URLs.PTS
 
 local CB2_ApplyOptions
 local CB2_CheckForUpdate
@@ -159,20 +158,13 @@ function OnComponentLoad()
     CB2_CheckForUpdate = Callback2.Create()
     CB2_CheckForUpdate:Bind(CheckForUpdate)
 
-    InterfaceOptions.SetCallbackFunc(OnOptionChanged)
-end
-
-function OnPlayerReady()
-    local clientApiHost = System.GetOperatorSetting("clientapi_host")
-    Debug.Table("clientApiHost", clientApiHost)
-
-    if (unicode.match(clientApiHost, "clientapi%-publictest")) then
-        g_URL = c_URLs["pts"]
-    elseif (unicode.match(clientApiHost, "clientapi%-v%d+%-ew%d+")) then
-        g_URL = c_URLs["live-eu"]
-    elseif (unicode.match(clientApiHost, "clientapi%-v%d+%-uw%d+")) then
-        g_URL = c_URLs["live-us"]
+    if (unicode.match(System.GetOperatorSetting("clientapi_host"), "clientapi%-publictest")) then
+        g_URL = c_URLs.PTS
+    else
+        g_URL = c_URLs.Live
     end
 
     Debug.Log("g_URL", g_URL)
+
+    InterfaceOptions.SetCallbackFunc(OnOptionChanged)
 end
