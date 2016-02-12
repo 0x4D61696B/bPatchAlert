@@ -20,11 +20,11 @@ Debug.EnableLogging(false)
 -- =============================================================================
 
 local c_URLs = {
-    Live    = "https://operator.firefallthegame.com/api/v1/products/Firefall_Beta",
-    PTS     = "https://operator-v01-uw2-publictest.firefall.com/api/v1/products/Firefall_PublicTest"
+    Live    = "https://operator.firefall.com/api/v1/products/Firefall_Beta",
+    PTS     = "https://operator-publictest.firefall.com/api/v1/products/Firefall_PublicTest"
 }
 
-local g_Enable = true
+local g_Enable = false
 local g_BuildInfo = {}
 local g_Timer = 900
 local g_URL = c_URLs.PTS
@@ -150,8 +150,8 @@ end
 
 function OnComponentLoad()
     local branch, build = unicode.match(System.GetUniqueBuildID(), "(%w+)%-(%d+)")
-    g_BuildInfo["build"] = tonumber(build)
     g_BuildInfo["branch"] = tostring(branch)
+    g_BuildInfo["build"] = tonumber(build)
 
     CB2_ApplyOptions = Callback2.Create()
     CB2_ApplyOptions:Bind(UpdateCallback)
