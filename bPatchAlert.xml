@@ -8,8 +8,8 @@
     <Info
         title="bPatchAlert"
         author="BurstBiscuit"
-        description=""
-        url=""
+        description="Displays a HUD note when a new patch is available"
+        url="https://bitbucket.org/0x4D61696B/bpatchalert"
         uiVersion="1000"
     />
 
