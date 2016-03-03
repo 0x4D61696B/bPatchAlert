@@ -2,7 +2,7 @@
 <Component
         xmlns="http://www.red5studios.com/"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.red5studios.com/ ../../../../schemas/component.xsd"
+        xsi:schemaLocation="http://www.red5studios.com/ ../../../schemas/component.xsd"
     >
 
     <Info
